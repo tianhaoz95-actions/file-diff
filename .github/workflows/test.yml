@@ -19,10 +19,12 @@ jobs:
           lhs: './fixtures/example_1.txt'
           rhs: './fixtures/example_2.txt'
           fail: 'true'
+          debug: 'true'
       - name: Run local file-diff action
         uses: ./
         with:
           lhs: './fixtures/example_1.txt'
           rhs: './fixtures/example_3.txt'
           fail: 'false'
+          debug: 'true'
 

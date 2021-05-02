@@ -11,6 +11,10 @@ inputs:
     description: 'If file diff should fail the action'
     required: false
     default: 'true'
+  debug:
+    description: 'If debug output should show'
+    required: false
+    default: 'false'
 runs:
   using: 'node12'
   main: 'lib/index.js'

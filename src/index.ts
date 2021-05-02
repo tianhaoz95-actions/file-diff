@@ -22,8 +22,15 @@ const main = (): void => {
     // TODO(tianhaoz95): change this to getBooleanInput once
     // it becomes available.
     const fail = core.getInput('fail') === 'true';
+    const debug = core.getInput('debug') === 'true';
     const lhsContent = fs.readFileSync(lhs).toString();
     const rhsContent = fs.readFileSync(rhs).toString();
+    if (debug) {
+        core.startGroup('Show the contents for debugging.')
+        core.info(`The content of lhs is: ${lhsContent}`);
+        core.info(`The content of rhs is: ${rhsContent}`);
+        core.endGroup()
+    }
     const diffResult = differ.diffChars(lhsContent, rhsContent);
     let diffCnt = 0;
     let loggingContent: string = '';
