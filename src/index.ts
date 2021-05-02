@@ -1,5 +1,5 @@
 import * as core from '@actions/core';
-import differ from 'diff';
+import * as differ from 'diff';
 import fs from 'fs';
 
 const getColoredLog = (diffResult: differ.Change): string => {

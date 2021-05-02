@@ -13,7 +13,7 @@ jobs:
         run: npm ci
       - name: Build action
         run: npm run build
-      - name: Run local dot-npmrc action
+      - name: Run local file-diff action
         uses: ./
         with:
           lhs: './fixtures/example_1.txt'
