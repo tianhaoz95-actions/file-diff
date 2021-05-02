@@ -25,19 +25,19 @@ const main = (): void => {
     const lhsContent = fs.readFileSync(lhs).toString();
     const rhsContent = fs.readFileSync(rhs).toString();
     const diffResult = differ.diffChars(lhsContent, rhsContent);
-    if (diffResult.length === 0) {
-
-    } else {
-        let loggingContent: string = '';
-        diffResult.forEach((part: differ.Change): void => {
-            loggingContent += getColoredLog(part);
-        });
-        core.info(loggingContent);
-        if (fail) {
-            core.setFailed(
-                `There are ${diffResult.length} differences 
-                in content of ${lhs} and ${rhs}`);
+    let diffCnt = 0;
+    let loggingContent: string = '';
+    diffResult.forEach((part: differ.Change): void => {
+        if (part.added || part.removed) {
+            diffCnt += 1;
         }
+        loggingContent += getColoredLog(part);
+    });
+    core.info(loggingContent);
+    if (diffCnt > 0 && fail) {
+        core.setFailed(
+            `There are ${diffResult.length} differences 
+            in content of ${lhs} and ${rhs}`);
     }
 }
 
