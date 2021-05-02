@@ -33,19 +33,17 @@ const main = (): void => {
     let loggingContent: string = '';
     if (debug) {
         core.startGroup('Iterate diff results.');
+        diffResult.forEach((part: differ.Change): void => {
+            core.info(JSON.stringify(part));
+        });
+        core.endGroup()
     }
     diffResult.forEach((part: differ.Change): void => {
-        if (debug) {
-            core.info(JSON.stringify(part));
-        }
         if (part.added || part.removed) {
             diffCnt += 1;
         }
         loggingContent += getColoredLog(part);
     });
-    if (debug) {
-        core.endGroup()
-    }
     core.info(loggingContent);
     if (diffCnt > 0 && fail) {
         core.setFailed(
