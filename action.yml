@@ -1,5 +1,8 @@
 name: 'File Diff'
 description: 'Compare the content of 2 files.'
+branding:
+  icon: align-left
+  color: green
 inputs:
   lhs:
     description: 'The LHS file to compare'
