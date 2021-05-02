@@ -26,7 +26,7 @@ const main = (): void => {
     const lhsContent = fs.readFileSync(lhs).toString();
     const rhsContent = fs.readFileSync(rhs).toString();
     if (debug) {
-        core.startGroup('[Debug] Show the contents.')
+        core.startGroup('The file contents.')
         core.info(`The content of lhs is: ${lhsContent}`);
         core.info(`The content of rhs is: ${rhsContent}`);
         core.endGroup()
