@@ -26,7 +26,7 @@ const main = (): void => {
     const lhsContent = fs.readFileSync(lhs).toString();
     const rhsContent = fs.readFileSync(rhs).toString();
     if (debug) {
-        core.startGroup('Show the contents for debugging.')
+        core.startGroup('[Debug] Show the contents.')
         core.info(`The content of lhs is: ${lhsContent}`);
         core.info(`The content of rhs is: ${rhsContent}`);
         core.endGroup()
@@ -34,12 +34,21 @@ const main = (): void => {
     const diffResult = differ.diffChars(lhsContent, rhsContent);
     let diffCnt = 0;
     let loggingContent: string = '';
+    if (debug) {
+        core.startGroup('Iterate diff results.');
+    }
     diffResult.forEach((part: differ.Change): void => {
+        if (debug) {
+            core.info(JSON.stringify(part));
+        }
         if (part.added || part.removed) {
             diffCnt += 1;
         }
         loggingContent += getColoredLog(part);
     });
+    if (debug) {
+        core.endGroup()
+    }
     core.info(loggingContent);
     if (diffCnt > 0 && fail) {
         core.setFailed(
