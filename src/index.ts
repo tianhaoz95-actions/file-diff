@@ -4,16 +4,13 @@ import fs from 'fs';
 
 const getColoredLog = (diffResult: differ.Change): string => {
     let diffContent = diffResult.value;
-    // See https://en.wikipedia.org/wiki/ANSI_escape_code
-    // for all the color codes.
-    let diffPrefix = '\u001b[37m'; // White
     if (diffResult.added) {
-        return '\u001b[92m'; // Bright Green
+        return `(+ ${diffContent})`;
     }
     if (diffResult.removed) {
-        return '\u001b[35m'; // Magenta
+        return `(- ${diffContent})`;
     }
-    return diffPrefix + diffContent;
+    return diffContent;
 }
 
 const main = (): void => {
