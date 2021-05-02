@@ -15,6 +15,10 @@ inputs:
     description: 'If debug output should show'
     required: false
     default: 'false'
+  compare:
+    description: 'If diff compare should show'
+    required: false
+    default: 'false'
 runs:
   using: 'node12'
   main: 'lib/index.js'

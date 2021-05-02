@@ -20,6 +20,7 @@ jobs:
           rhs: './fixtures/example_2.txt'
           fail: 'true'
           debug: 'true'
+          compare: 'true'
       - name: Run local file-diff action
         uses: ./
         with:
@@ -27,4 +28,5 @@ jobs:
           rhs: './fixtures/example_3.txt'
           fail: 'false'
           debug: 'true'
+          compare: 'true'
 

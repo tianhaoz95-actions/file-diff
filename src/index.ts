@@ -20,6 +20,7 @@ const main = (): void => {
     // it becomes available.
     const fail = core.getInput('fail') === 'true';
     const debug = core.getInput('debug') === 'true';
+    const compare = core.getInput('compare') === 'true';
     const lhsContent = fs.readFileSync(lhs).toString();
     const rhsContent = fs.readFileSync(rhs).toString();
     if (debug) {
@@ -44,7 +45,9 @@ const main = (): void => {
         }
         loggingContent += getColoredLog(part);
     });
-    core.info(loggingContent);
+    if (compare) {
+        core.info(`The diff result is: ${loggingContent}`);
+    }
     if (diffCnt > 0 && fail) {
         core.setFailed(
             `There are ${diffResult.length} differences 
