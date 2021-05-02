@@ -1,0 +1,16 @@
+name: 'File Diff'
+description: 'Compare the content of 2 files.'
+inputs:
+  lhs:
+    description: 'The LHS file to compare'
+    required: true
+  rhs:
+    description: 'The RHS file to compare'
+    required: true
+  fail:
+    description: 'If file diff should fail the action'
+    required: false
+    default: 'true'
+runs:
+  using: 'node12'
+  main: 'lib/index.js'
