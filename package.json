@@ -1,6 +1,6 @@
 {
   "name": "file-diff-action",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "GitHub action to diff the content of 2 files.",
   "main": "lib/index.js",
   "scripts": {
